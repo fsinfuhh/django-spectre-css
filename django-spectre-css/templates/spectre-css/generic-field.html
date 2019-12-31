@@ -1,0 +1,9 @@
+{% load spectre_css %}
+
+    {% if field|is_checkbox %}
+        {% render_form_checkbox field switch %}
+    {% elif field|is_select %}
+        {% render_form_select field add_choices replace_choices empty_option %}
+    {% else %}
+        {% render_form_field_default field value %}
+    {% endif %}

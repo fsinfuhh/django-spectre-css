@@ -1,0 +1,28 @@
+{% load widget_tweaks %}
+
+<div class="form-group">
+    <label class="form-radio" for="{{ field.id_for_label }}">
+    {% if form.is_bound %}
+      {% if field.errors %}
+        {% render_field field class="is-error" %}
+          <p class="form-input-hint">
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+          </p>
+      {% else %}
+        {% render_field field class="is-success" %}
+      {% endif %}
+    {% else %}
+      {% render_field field %}
+    {% endif %}
+    <i class="form-icon"></i>
+    {% if field.errors %}
+        <p class="form-input-hint">{% for error in field.errors %}{{ error }} {% endfor %}</p>
+    {% endif %}
+    {{  field.label }}
+    </label>
+    {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+    {% endif %}
+</div>
