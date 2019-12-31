@@ -1,0 +1,9 @@
+<p class="form-input-hint{% if not field.is_bound %} text-muted{% endif %}">
+    {% if field.errors.length == 1 %}
+        {{ field.errors.0 }}
+    {% else %}
+        {% for error in field.errors %}
+            {{ error }}<br> {# this is ugly as the last item wil also have an <br> #}
+        {% endfor %}
+    {% endif %}
+</p>
