@@ -1,0 +1,17 @@
+{% load widget_tweaks %}
+
+<div class="form-group">
+    <label class="form-{% if switch %}switch{% else %}checkbox{% endif %}{% if field.is_bound %}{% if field.errors %} is-error{% else %} is-success {% endif %}{% endif %}"
+           for="{{ field.id_for_label }}">
+        {% render_field field class="form-checkbox" %}
+        <i class="form-icon
+                {% if field.is_bound %}{% if field.errors %} is-error{% else %} is-success {% endif %}{% endif %}"></i>
+        {{ field.label }}
+        {% if field.errors %}
+            {% include "spectre-css/render_errors.html" %}
+        {% endif %}
+        {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+    </label>
+</div>

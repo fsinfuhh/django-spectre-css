@@ -1,0 +1,18 @@
+{% load widget_tweaks %}
+<div class="form-group">
+    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {% if field.form.is_bound %}
+        {% if field.errors %}
+            {% render_field field class="form-input is-error" rows="3" %}
+            {% include "spectre-css/render_errors.html" %}
+        {% else %}
+            {% render_field field class="form-input is-success" %}
+        {% endif %}
+    {% else %}
+        {% render_field field class="form-input" %}
+    {% endif %}
+
+    {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+    {% endif %}
+</div>
