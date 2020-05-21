@@ -1,3 +1,6 @@
 .pyenv/
 .idea/
 __pycache__/
+django_spectre_css.egg-info/
+build
+dist

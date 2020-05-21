@@ -3,7 +3,7 @@ import codecs
 from setuptools import setup, find_packages
 
 
-version = '0.1.dev1'
+version = '0.1.dev2'
 
 
 def read(*parts):
@@ -13,7 +13,7 @@ def read(*parts):
 
 
 install_requires = [
-    'Django>=1.11,<3.0',
+    'Django>=1.11,<4.0',
     'django-widget-tweaks>=1.4,<=1.5'
 ]
 
@@ -29,13 +29,16 @@ setup(
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     author='Nils Rokita',
-    author_email='0rokita@informatik.uni-hamburg.de;',
+    author_email='0rokita@informatik.uni-hamburg.de',
     maintainer='Nils Rokita',
     maintainer_email='0rokita@informatik.uni-hamburg.de',
     url='https://github.com/fsinfuhh/django-spectre-css',
     license='License :: OSI Approved :: MIT License',
     packages=find_packages(),
     install_requires=install_requires,
+    package_data={
+        "": ["static/css/lib/*.css", "templates/spectre-css/*.html"],
+    },
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
