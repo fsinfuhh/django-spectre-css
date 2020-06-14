@@ -79,3 +79,18 @@ def render_form_radio(field: BoundField):
 @register.inclusion_tag('spectre-css/form.html')
 def render_form(form: Form):
     return {'form': form}
+
+
+@register.inclusion_tag('spectre-css/form-haeder.html')
+def render_form_header(form: Form):
+    return {'form': form}
+
+@register.inclusion_tag('spectre-css/render-multi-fild-part.html')
+def render_multi_fild_part(field: BoundField, index: int, label_text: Optional[str] = None):
+    return {
+        'field': field,
+        'index': index,
+        'label_text': label_text,
+        'field_class': 'form-input',
+        'field_id': "{}_{}".format(field.auto_id, index),
+    }
