@@ -4,6 +4,8 @@
     {% render_form_checkbox field switch %}
 {% elif field|is_select %}
     {% render_form_select field add_choices replace_choices empty_option %}
+{% elif field|is_multi_field %}
+    {% render_multi_field field %}
 {% else %}
     {% render_form_field_default field %}
 {% endif %}

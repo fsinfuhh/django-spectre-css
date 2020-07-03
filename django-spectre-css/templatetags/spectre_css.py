@@ -19,6 +19,11 @@ def is_select(field):
     return isinstance(field.field.widget, Select)
 
 
+@register.filter
+def is_multi_field(field: BoundField):
+    return "fields" in field.field.__dict__
+
+
 field_value = Union[str, int, None]
 choice_list_type = Optional[List[Tuple[field_value, str]]]
 
