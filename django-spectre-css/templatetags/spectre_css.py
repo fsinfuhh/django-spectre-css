@@ -26,7 +26,7 @@ choice_list_type = Optional[List[Tuple[field_value, str]]]
 @register.inclusion_tag('spectre-css/generic-field.html')
 def render_form_field(field: BoundField, switch: bool = False, add_choices: choice_list_type = None,
                       replace_choices: choice_list_type = None, empty_option: Optional[str] = None,
-                      value:  field_value = None):
+                      value: field_value = None):
     if value:
         field.initial = value
     return {
@@ -85,12 +85,24 @@ def render_form(form: Form):
 def render_form_header(form: Form):
     return {'form': form}
 
-@register.inclusion_tag('spectre-css/render-multi-fild-part.html')
-def render_multi_fild_part(field: BoundField, index: int, label_text: Optional[str] = None):
+
+@register.inclusion_tag('spectre-css/render-multi-field-part.html')
+def render_multi_field_part(field: BoundField, index: int, label_text: Optional[str] = None, bare: bool = False,
+                            additional_class: str = ""):
     return {
         'field': field,
         'index': index,
         'label_text': label_text,
         'field_class': 'form-input',
         'field_id': "{}_{}".format(field.auto_id, index),
+        'bare': bare,
+        'additional_class': additional_class,
+    }
+
+
+@register.inclusion_tag('spectre-css/render-multi-field.html')
+def render_multi_field(field: BoundField):
+    return {
+        'field': field,
+        'count': range(0, len(field.field.fields))
     }

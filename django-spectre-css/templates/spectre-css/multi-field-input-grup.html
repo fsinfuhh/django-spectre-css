@@ -1,0 +1,6 @@
+{% load spectre_css %}
+<div class="input-group">
+    {% for index in count %}
+        {% render_multi_field_part field index bare=True additional_class=add_class %}
+    {% endfor %}
+</div>
