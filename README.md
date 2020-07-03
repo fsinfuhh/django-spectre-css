@@ -23,7 +23,7 @@ add it to your installed apps:
 ## Examples:
 This module defines the following tags to make displaying Forms easier.
 
-The help_text from models is mrked as save in the template and therfore it is possible to have html e.g. links in the help_text.
+The help_text from models is marked as save in the template and therefore it is possible to have html e.g. links in the help_text.
 
 - render a field user of the form 'form':
 
@@ -45,6 +45,16 @@ The help_text from models is mrked as save in the template and therfore it is po
     <input type="submit" value="Save" class="btn btn-primary">
     </form>
     
+- render the first two parts of a MultiValueField as independent Fields:
+
+
+    {% extends base.html %}
+    {% load spectre_css %}
+
+    [...]
+    {% render_form_field form.datetime 0 label_text="Date"%}
+    {% render_form_field form.datetime 1 label_text="Time" %}
+
 
 `render_form_field` takes the following keyword arguments:
 
