@@ -1,20 +1,9 @@
-<div class="form-group">
+<div class="form-group {% if field.form.is_bound %}{% if field.errors %}has-error{% else %}has-success{% endif %}{% endif %}">
     <label class="form-label" for="{{ field_id }}">{{ field.label }}{# field.label #}</label>
-    {% if field.form.is_bound %}
-        {% if field.errors %}
-            {% with add_class="is-error" %}
-                {% include "spectre-css/multi-field-input-grup.html" %}
-                {% include "spectre-css/render_errors.html" %}
-            {% endwith %}
-        {% else %}
-            {% with add_class="is-success" %}
-                {% include "spectre-css/multi-field-input-grup.html" %}
-            {% endwith %}
-        {% endif %}
-    {% else %}
-        {% include "spectre-css/multi-field-input-grup.html" %}
+{% include "spectre-css/multi-field-input-group.html" %}
+    {% if field.form.is_bound and field.errors %}
+        {% include "spectre-css/render_errors.html" %}
     {% endif %}
-
     {% if field.index.help_text %}
         <small class="form-text text-muted">{{ field.index.help_text|safe }}</small>
     {% endif %}
