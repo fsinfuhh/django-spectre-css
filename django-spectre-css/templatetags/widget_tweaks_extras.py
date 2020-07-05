@@ -62,7 +62,6 @@ class MultiFieldAttributeNode(template.Node):
         widget = bounded_field.field.widget.widgets[index]
 
         attrs = widget.attrs.copy()
-        print(attrs)
         for k, v in self.set_attrs:
             attrs[k] = v.resolve(context)
         for k, v in self.append_attrs:

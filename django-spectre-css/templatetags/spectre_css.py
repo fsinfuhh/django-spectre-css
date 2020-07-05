@@ -1,6 +1,6 @@
 from typing import List, Tuple, Optional, Union
 
-from django.forms import Form
+from django.forms import Form, MultiValueField
 from django.forms.boundfield import BoundField
 from django.forms.models import ModelChoiceIterator
 from django.forms.widgets import Select, CheckboxInput
@@ -21,7 +21,7 @@ def is_select(field):
 
 @register.filter
 def is_multi_field(field: BoundField):
-    return "fields" in field.field.__dict__
+    return isinstance(field, MultiValueField)
 
 
 field_value = Union[str, int, None]
@@ -86,7 +86,7 @@ def render_form(form: Form):
     return {'form': form}
 
 
-@register.inclusion_tag('spectre-css/form-haeder.html')
+@register.inclusion_tag('spectre-css/form-header.html')
 def render_form_header(form: Form):
     return {'form': form}
 
