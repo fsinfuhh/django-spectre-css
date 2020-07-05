@@ -3,7 +3,7 @@
     {% render_multi_field field index class+=additional_class class+=field_class id=field_id %}
 {% else %}
     <div class="form-group">
-        <label class="form-label" for="{{ field_id }}">{{ label_text }}{# field.label #}</label>
+        <label class="form-label" for="{{ field_id }}">{{ label_text }}</label>
         {% if field.form.is_bound %}
             {% if field.errors %}
                 {% render_multi_field field index class+=additional_class class+="is-error" class+=field_class id=field_id %}
