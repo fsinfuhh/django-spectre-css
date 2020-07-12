@@ -21,7 +21,7 @@ def is_select(field):
 
 @register.filter
 def is_multi_field(field: BoundField):
-    return isinstance(field, MultiValueField)
+    return isinstance(field.field, MultiValueField)
 
 
 field_value = Union[str, int, None]
