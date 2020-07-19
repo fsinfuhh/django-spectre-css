@@ -18,6 +18,8 @@ add it to your installed apps:
     INSTALLED_APPS = [
         '...',
         'django-spectre-css',
+        'widget_tweaks',
+
     ]
 
 ## Warning
