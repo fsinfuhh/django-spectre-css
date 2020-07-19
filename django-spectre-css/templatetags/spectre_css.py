@@ -45,12 +45,14 @@ def render_form_field(field: BoundField, switch: bool = False, add_choices: choi
     }
 
 
-@register.inclusion_tag('spectre-css/render-form-field.html')
+
+@register.inclusion_tag("spectre-css/render-form-field.html")
 def render_form_field_default(field: BoundField):
-    return {
-        'field': field,
-        'field_class': 'form-input',
-    }
+    field_classes = "form-input"
+    overriden_classes = field.field.widget.attrs.get("class", "")
+    field_classes += " " + overriden_classes
+
+    return {"field": field, "field_class": field_classes}
 
 
 @register.inclusion_tag('spectre-css/render-form-checkbox.html')
