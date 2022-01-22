@@ -17,13 +17,13 @@ add it to your installed apps:
 
     INSTALLED_APPS = [
         '...',
-        'django-spectre-css',
+        'django_spectre_css',
     ]
 
 ## Warning
 
 The help_text from models is marked as save in the template and therefore it is possible to have html e.g. links in the help_text.
-This means that help_text of an ModelField should never be directly based on user input.
+This means that help_text of an ModelField should **never be directly based on user input**.
 
 ## Examples:
 This module defines the following tags to make displaying forms easier.
