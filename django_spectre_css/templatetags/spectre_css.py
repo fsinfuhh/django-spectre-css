@@ -45,12 +45,14 @@ def render_form_field(field: BoundField, switch: bool = False, add_choices: choi
     }
 
 
-@register.inclusion_tag('spectre-css/render-form-field.html')
+
+@register.inclusion_tag("spectre-css/render-form-field.html")
 def render_form_field_default(field: BoundField):
-    return {
-        'field': field,
-        'field_class': 'form-input',
-    }
+    field_classes = "form-input"
+    overriden_classes = field.field.widget.attrs.get("class", "")
+    field_classes += " " + overriden_classes
+
+    return {"field": field, "field_class": field_classes}
 
 
 @register.inclusion_tag('spectre-css/render-form-checkbox.html')
@@ -61,7 +63,7 @@ def render_form_checkbox(field: BoundField, switch: bool = False):
 @register.inclusion_tag('spectre-css/render-form-field.html')
 def render_form_select(field: BoundField, add_choices: choice_list_type = None,
                        replace_choices: choice_list_type = None, empty_option: str = None):
-    if replace_choices:
+    if replace_choices is not None:
         field.field.widget.choices = replace_choices
     if (add_choices or empty_option) and isinstance(field.field.widget.choices, ModelChoiceIterator):
         # the repacking into an list is necessary because the ModelChoiceIterator does not support inserting
