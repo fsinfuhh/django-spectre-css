@@ -76,3 +76,9 @@ This module defines the following tags to make displaying forms easier.
 - `replace_choices=[(value,text),...]` to set the choices of an select manually
 - `empty_option=value` to generate an empty option if None is selected with the text `value`  (only select widgets)
 - `value=value` overwrites the initial value of the field (not Checkbox and Select) with `value` 
+
+## Upgrades
+
+### From < 0.3
+
+`'django-spectre-css'` has to be changed into `'django_spectre_css'` in th `INSTALLED_APPS` in Django settings.py

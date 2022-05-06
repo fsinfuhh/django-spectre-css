@@ -3,7 +3,7 @@ import codecs
 from setuptools import setup, find_packages
 
 
-version = '0.3.dev2'
+version = '0.3.dev1'
 
 
 def read(*parts):
